@@ -1,0 +1,101 @@
+[2026-02-05T22:16:01.502+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-05T22:16:01.526+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex05_ml_prediction manual__2026-02-05T22:12:58+00:00 [queued]>
+[2026-02-05T22:16:01.536+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex05_ml_prediction manual__2026-02-05T22:12:58+00:00 [queued]>
+[2026-02-05T22:16:01.537+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 3
+[2026-02-05T22:16:01.552+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): ex05_ml_prediction> on 2026-02-05 22:12:58+00:00
+[2026-02-05T22:16:01.563+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1635) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-05T22:16:01.564+0000] {standard_task_runner.py:72} INFO - Started process 1638 to run task
+[2026-02-05T22:16:01.562+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_pipeline', 'ex05_ml_prediction', 'manual__2026-02-05T22:12:58+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_pipeline.py', '--cfg-path', '/tmp/tmp6va62cv4']
+[2026-02-05T22:16:01.564+0000] {standard_task_runner.py:105} INFO - Job 84: Subtask ex05_ml_prediction
+[2026-02-05T22:16:01.622+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_taxi_pipeline.ex05_ml_prediction manual__2026-02-05T22:12:58+00:00 [running]> on host 2af73409e72d
+[2026-02-05T22:16:01.746+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='cytech' AIRFLOW_CTX_DAG_ID='nyc_taxi_pipeline' AIRFLOW_CTX_TASK_ID='ex05_ml_prediction' AIRFLOW_CTX_EXECUTION_DATE='2026-02-05T22:12:58+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-05T22:12:58+00:00'
+[2026-02-05T22:16:01.747+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-05T22:16:01.771+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-05T22:16:01.772+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        set -e\n        \n        echo "🤖 ex05: Exécution des prédictions ML..."\n        \n        if sbt ex5/run; then\n            echo "✅ ex05 terminé avec succès!"\n        else\n            echo "❌ ERREUR: ex05 a échoué!"\n            exit 1\n        fi\n        ']
+[2026-02-05T22:16:01.786+0000] {subprocess.py:86} INFO - Output:
+[2026-02-05T22:16:01.788+0000] {subprocess.py:93} INFO - 🤖 ex05: Exécution des prédictions ML...
+[2026-02-05T22:16:04.275+0000] {subprocess.py:93} INFO - [warn] No sbt.version set in project/build.properties, base directory: /tmp/***tmpc0wmau6s
+[2026-02-05T22:16:04.316+0000] {subprocess.py:93} INFO - [info] welcome to sbt 1.9.9 (Debian Java 17.0.18)
+[2026-02-05T22:16:06.937+0000] {subprocess.py:93} INFO - [info] set current project to ***tmpc0wmau6s (in build file:/tmp/***tmpc0wmau6s/)
+[2026-02-05T22:16:07.317+0000] {subprocess.py:93} INFO - [error] Expected ID character
+[2026-02-05T22:16:07.318+0000] {subprocess.py:93} INFO - [error] Not a valid command: ex5 (similar: exit, set, export)
+[2026-02-05T22:16:07.319+0000] {subprocess.py:93} INFO - [error] Expected project ID
+[2026-02-05T22:16:07.320+0000] {subprocess.py:93} INFO - [error] Expected configuration
+[2026-02-05T22:16:07.321+0000] {subprocess.py:93} INFO - [error] Expected ':'
+[2026-02-05T22:16:07.322+0000] {subprocess.py:93} INFO - [error] Expected key
+[2026-02-05T22:16:07.322+0000] {subprocess.py:93} INFO - [error] Not a valid key: ex5
+[2026-02-05T22:16:07.323+0000] {subprocess.py:93} INFO - [error] ex5/run
+[2026-02-05T22:16:07.323+0000] {subprocess.py:93} INFO - [error]    ^
+[2026-02-05T22:16:07.689+0000] {subprocess.py:93} INFO - ❌ ERREUR: ex05 a échoué!
+[2026-02-05T22:16:07.690+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-02-05T22:16:07.700+0000] {taskinstance.py:3301} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-02-05T22:16:07.710+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=nyc_taxi_pipeline, task_id=ex05_ml_prediction, run_id=manual__2026-02-05T22:12:58+00:00, execution_date=20260205T221258, start_date=20260205T221601, end_date=20260205T221607
+[2026-02-05T22:16:07.731+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-05T22:16:07.732+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 84 for task ex05_ml_prediction (Bash command failed. The command returned a non-zero exit code 1.; 1638)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2995, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3149, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3173, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-02-05T22:16:07.749+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
+[2026-02-05T22:16:07.767+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-05T22:16:07.770+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

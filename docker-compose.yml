@@ -1,3 +1,45 @@
+x-airflow-common: &airflow-common
+  build:
+    context: ./docker/airflow
+    dockerfile: Dockerfile
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    # Variables Spark pour SparkConfig.scala
+    SPARK_APP_NAME: SparkApp
+    SPARK_MASTER: local[*] # spark://spark-master:7077 pour le mode cluster
+    SPARK_LOG_LEVEL: WARN
+    # Variables MinIO pour SparkConfig.scala
+    MINIO_ROOT_USER: minio
+    MINIO_ROOT_PASSWORD: minio123
+    S3_ENDPOINT: http://minio:9000/
+    S3_PATH_STYLE_ACCESS: 'true'
+    S3_SSL_ENABLED: 'false'
+    S3_MAX_ATTEMPTS: '1'
+    S3_ESTABLISH_TIMEOUT: '6000'
+    S3_CONNECTION_TIMEOUT: '5000'
+    # Variables PostgreSQL pour SparkConfig.scala
+    POSTGRES_URL: jdbc:postgresql://postgres-dw:5432/nyc_taxi_dw
+    POSTGRES_USER: psg
+    POSTGRES_PASSWORD: psg123
+  volumes:
+    - ./ex06_airflow/dags:/opt/airflow/dags
+    - ./ex06_airflow/logs:/opt/airflow/logs
+    - ./ex06_airflow/config:/opt/airflow/config
+    - ./ex06_airflow/plugins:/opt/airflow/plugins
+    - ./:/opt/airflow/projet_big_data_cytech
+  user: "1000:0"
+  depends_on: &airflow-common-depends-on
+    postgres-airflow:
+      condition: service_healthy
+  networks:
+    - spark-network
+
 services:
   spark-master:
     build: ./docker
@@ -9,13 +51,17 @@ services:
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
       - SPARK_MASTER_URL=spark://spark-master:7077
+      - BUCKET_NAME=nyc
+      - FILE_NAME_BUCKET_FIRST_DEPOSIT=yellow_tripdata_2025-08.parquet
+      - CLEANED_BUCKET_NAME=nyc-cleaned
+      - URL_YELLOW_TAXI=https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-08.parquet
     ports:
       - "8081:8080" # Web UI
       - "7077:7077" # Spark master port
     networks:
       - spark-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -68,16 +114,110 @@ services:
     container_name: minio
     image: minio/minio:RELEASE.2025-09-07T16-13-09Z
     ports:
-      - '9000:9000'  # Changed from 9000 to avoid HDFS conflict
+      - '9000:9000' # Changed from 9000 to avoid HDFS conflict
       - '9001:9001'
-    #   volumes:
-    #     - ./minio-data:/data
+    volumes:
+      - ./minio-data:/data
     environment:
       MINIO_ROOT_USER: minio
       MINIO_ROOT_PASSWORD: minio123
     command: server /data --console-address ":9001"
     networks:
       - spark-network
+
+  #base de donnée postgre
+  postgres-dw:
+    image: postgres:15-alpine
+    container_name: postgres_data_warehouse
+    environment:
+      - POSTGRES_USER=psg
+      - POSTGRES_PASSWORD=psg123
+      - POSTGRES_DB=nyc_taxi_dw
+    ports:
+      - "5432:5432"
+    volumes:
+      # Montage des scripts SQL de l'exercice 3 pour exécution automatique au démarrage
+      - ./ex03_sql_table_creation/creation.sql:/docker-entrypoint-initdb.d/1-creation.sql
+      - ./ex03_sql_table_creation/insertion.sql:/docker-entrypoint-initdb.d/2-insertion.sql
+      # Persistance des données
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - spark-network
+
+  postgres-airflow:
+    image: postgres:13
+    container_name: postgres_airflow
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_airflow_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "airflow" ]
+      interval: 5s
+      retries: 5
+    networks:
+      - spark-network
+
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R "${AIRFLOW_UID:-1000}:0" /sources/{logs,dags,plugins}
+        exec /entrypoint airflow version
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: airflow
+      _AIRFLOW_WWW_USER_PASSWORD: airflow
+    user: "0:0"
+    volumes:
+      - ./ex06_airflow:/sources
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "8082:8080"
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
+    healthcheck:
+      test: [ "CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"' ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
+
+# Définition des volumes et réseaux
+volumes:
+  postgres_data:
+  postgres_airflow_data:
+
 
 networks:
   spark-network:

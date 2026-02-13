@@ -1,0 +1,69 @@
+[2026-02-13T02:24:43.614+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-13T02:24:43.630+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex01_download_data manual__2026-02-13T02:24:42.342829+00:00 [queued]>
+[2026-02-13T02:24:43.638+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex01_download_data manual__2026-02-13T02:24:42.342829+00:00 [queued]>
+[2026-02-13T02:24:43.638+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 4
+[2026-02-13T02:24:43.650+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): ex01_download_data> on 2026-02-13 02:24:42.342829+00:00
+[2026-02-13T02:24:43.657+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=3735) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-13T02:24:43.658+0000] {standard_task_runner.py:72} INFO - Started process 3736 to run task
+[2026-02-13T02:24:43.657+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_pipeline', 'ex01_download_data', 'manual__2026-02-13T02:24:42.342829+00:00', '--job-id', '127', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_pipeline.py', '--cfg-path', '/tmp/tmptbpn1yb6']
+[2026-02-13T02:24:43.658+0000] {standard_task_runner.py:105} INFO - Job 127: Subtask ex01_download_data
+[2026-02-13T02:24:43.699+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_taxi_pipeline.ex01_download_data manual__2026-02-13T02:24:42.342829+00:00 [running]> on host 0c48d55d6118
+[2026-02-13T02:24:43.769+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='cytech' AIRFLOW_CTX_DAG_ID='nyc_taxi_pipeline' AIRFLOW_CTX_TASK_ID='ex01_download_data' AIRFLOW_CTX_EXECUTION_DATE='2026-02-13T02:24:42.342829+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-13T02:24:42.342829+00:00'
+[2026-02-13T02:24:43.770+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-13T02:24:43.806+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-13T02:24:43.806+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        set -e  # Arrêter si erreur\n        \n        echo "📥 ex01: Téléchargement des données NYC Taxi..."\n        cd /opt/***/projet_big_data_cytech\n        \n        if sbt ex1/run; then\n            echo "✅ ex01 terminé avec succès!"\n        else\n            echo "❌ ERREUR: ex01 a échoué!"\n            exit 1\n        fi\n        ']
+[2026-02-13T02:24:43.816+0000] {subprocess.py:86} INFO - Output:
+[2026-02-13T02:24:43.818+0000] {subprocess.py:93} INFO - 📥 ex01: Téléchargement des données NYC Taxi...
+[2026-02-13T02:24:43.928+0000] {subprocess.py:93} INFO - downloading sbt launcher 1.9.9
+[2026-02-13T02:24:44.334+0000] {subprocess.py:93} INFO - mv: cannot stat '/home/***/.cache/sbt/boot/sbt-launch/1.9.9/sbt-launch-1.9.9.jar.temp': No such file or directory
+[2026-02-13T02:24:44.440+0000] {subprocess.py:93} INFO - copying runtime jar...
+[2026-02-13T02:24:44.562+0000] {subprocess.py:93} INFO - java.nio.file.FileAlreadyExistsException: /home/***/.sbt/1.0/java9-rt-ext-debian_17_0_18/rt.jar
+[2026-02-13T02:24:44.562+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
+[2026-02-13T02:24:44.562+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:484)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.Files.newOutputStream(Files.java:228)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at jdk.zipfs/jdk.nio.zipfs.ZipFileSystem.<init>(ZipFileSystem.java:162)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at jdk.zipfs/jdk.nio.zipfs.ZipFileSystemProvider.getZipFileSystem(ZipFileSystemProvider.java:125)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at jdk.zipfs/jdk.nio.zipfs.ZipFileSystemProvider.newFileSystem(ZipFileSystemProvider.java:106)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.FileSystems.newFileSystem(FileSystems.java:339)
+[2026-02-13T02:24:44.563+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.FileSystems.newFileSystem(FileSystems.java:288)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.exportRt(Launch.scala:57)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.apply(Launch.scala:28)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.apply(Launch.scala:21)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot$.runImpl(Boot.scala:78)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot$.run(Boot.scala:73)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot$.main(Boot.scala:21)
+[2026-02-13T02:24:44.564+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot.main(Boot.scala)
+[2026-02-13T02:24:44.565+0000] {subprocess.py:93} INFO - [error] [launcher] error during sbt launcher: java.nio.file.FileAlreadyExistsException: /home/***/.sbt/1.0/java9-rt-ext-debian_17_0_18/rt.jar
+[2026-02-13T02:24:44.844+0000] {subprocess.py:93} INFO - [info] [launcher] getting org.scala-sbt sbt 1.8.3  (this may take some time)...
+[2026-02-13T02:24:49.620+0000] {subprocess.py:93} INFO - [info] [launcher] getting Scala 2.12.17 (for sbt)...
+[2026-02-13T02:24:50.860+0000] {subprocess.py:93} INFO - [info] welcome to sbt 1.8.3 (Debian Java 17.0.18)
+[2026-02-13T02:24:54.333+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build-build from metals.sbt ...
+[2026-02-13T02:24:55.812+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project/project
+[2026-02-13T02:24:59.221+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build from metals.sbt ...
+[2026-02-13T02:24:59.448+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project
+[2026-02-13T02:25:03.437+0000] {subprocess.py:93} INFO - [success] Generated .bloop/projet_big_data_cytech-build.json
+[2026-02-13T02:25:03.591+0000] {subprocess.py:93} INFO - [warn] Removed stale /opt/***/projet_big_data_cytech/project/.bloop/projet_big_data_cytech_25-build.json
+[2026-02-13T02:25:03.599+0000] {subprocess.py:93} INFO - [success] Total time: 4 s, completed Feb 13, 2026, 2:25:03 AM
+[2026-02-13T02:25:06.501+0000] {subprocess.py:93} INFO - [info] loading settings for project root from build.sbt ...
+[2026-02-13T02:25:07.301+0000] {subprocess.py:93} INFO - [info] set current project to projet_ingestion (in build file:/opt/***/projet_big_data_cytech/)
+[2026-02-13T02:25:27.585+0000] {subprocess.py:93} INFO - [info] compiling 2 Scala sources to /opt/***/projet_big_data_cytech/common/target/scala-2.13/classes ...
+[2026-02-13T02:25:27.749+0000] {subprocess.py:93} INFO - [info] Non-compiled module 'compiler-bridge_2.13' for Scala 2.13.17. Compiling...
+[2026-02-13T02:25:36.388+0000] {subprocess.py:93} INFO - [info]   Compilation completed in 8.638s.
+[2026-02-13T02:25:37.976+0000] {subprocess.py:93} INFO - [warn] 2 deprecations; re-run with -deprecation for details
+[2026-02-13T02:25:37.978+0000] {subprocess.py:93} INFO - [warn] one warning found
+[2026-02-13T02:25:37.988+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-13T02:25:38.134+0000] {subprocess.py:93} INFO - [info] compiling 1 Scala source to /opt/***/projet_big_data_cytech/ex01_data_retrieval/target/scala-2.13/classes ...
+[2026-02-13T02:25:38.493+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-13T02:25:44.021+0000] {subprocess.py:93} INFO - [info] running MinIOLoader
+[2026-02-13T02:25:45.225+0000] {subprocess.py:93} INFO - Erreur lors du téléchargement du fichier Parquet : Unable to execute HTTP request: nyc.minio
+[2026-02-13T02:25:45.232+0000] {subprocess.py:93} INFO - [success] Total time: 38 s, completed Feb 13, 2026, 2:25:45 AM
+[2026-02-13T02:25:45.731+0000] {subprocess.py:93} INFO - ✅ ex01 terminé avec succès!
+[2026-02-13T02:25:45.732+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-02-13T02:25:45.753+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-13T02:25:45.753+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=nyc_taxi_pipeline, task_id=ex01_download_data, run_id=manual__2026-02-13T02:24:42.342829+00:00, execution_date=20260213T022442, start_date=20260213T022443, end_date=20260213T022545
+[2026-02-13T02:25:45.778+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2026-02-13T02:25:45.810+0000] {taskinstance.py:3891} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-02-13T02:25:45.812+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

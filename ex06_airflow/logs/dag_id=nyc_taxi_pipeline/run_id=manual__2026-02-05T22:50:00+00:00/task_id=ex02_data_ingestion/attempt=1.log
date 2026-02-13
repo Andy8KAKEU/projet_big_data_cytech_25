@@ -1,0 +1,76 @@
+[2026-02-05T22:55:17.126+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-05T22:55:17.149+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex02_data_ingestion manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:55:17.162+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex02_data_ingestion manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:55:17.162+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 3
+[2026-02-05T22:55:17.178+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): ex02_data_ingestion> on 2026-02-05 22:50:00+00:00
+[2026-02-05T22:55:17.185+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1975) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-05T22:55:17.185+0000] {standard_task_runner.py:72} INFO - Started process 1976 to run task
+[2026-02-05T22:55:17.184+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_pipeline', 'ex02_data_ingestion', 'manual__2026-02-05T22:50:00+00:00', '--job-id', '118', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_pipeline.py', '--cfg-path', '/tmp/tmp8lnxbxv9']
+[2026-02-05T22:55:17.186+0000] {standard_task_runner.py:105} INFO - Job 118: Subtask ex02_data_ingestion
+[2026-02-05T22:55:17.228+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_taxi_pipeline.ex02_data_ingestion manual__2026-02-05T22:50:00+00:00 [running]> on host cf729da7de68
+[2026-02-05T22:55:17.316+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='cytech' AIRFLOW_CTX_DAG_ID='nyc_taxi_pipeline' AIRFLOW_CTX_TASK_ID='ex02_data_ingestion' AIRFLOW_CTX_EXECUTION_DATE='2026-02-05T22:50:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-05T22:50:00+00:00'
+[2026-02-05T22:55:17.317+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-05T22:55:17.345+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-05T22:55:17.346+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        set -e\n        \n        echo "🧹 ex02: Nettoyage et transformation des données..."\n        cd /opt/***/projet_big_data_cytech\n        \n        if sbt ex2/run; then\n            echo "✅ ex02 terminé avec succès!"\n        else\n            echo "❌ ERREUR: ex02 a échoué!"\n            exit 1\n        fi\n        ']
+[2026-02-05T22:55:17.354+0000] {subprocess.py:86} INFO - Output:
+[2026-02-05T22:55:17.356+0000] {subprocess.py:93} INFO - 🧹 ex02: Nettoyage et transformation des données...
+[2026-02-05T22:55:18.940+0000] {subprocess.py:93} INFO - [info] welcome to sbt 1.8.3 (Debian Java 17.0.18)
+[2026-02-05T22:55:19.824+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build-build from metals.sbt ...
+[2026-02-05T22:55:20.774+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project/project
+[2026-02-05T22:55:21.721+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build from metals.sbt ...
+[2026-02-05T22:55:21.907+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project
+[2026-02-05T22:55:23.804+0000] {subprocess.py:93} INFO - [success] Generated .bloop/projet_big_data_cytech-build.json
+[2026-02-05T22:55:23.916+0000] {subprocess.py:93} INFO - [success] Total time: 2 s, completed Feb 5, 2026, 10:55:23 PM
+[2026-02-05T22:55:24.167+0000] {subprocess.py:93} INFO - [info] loading settings for project root from build.sbt ...
+[2026-02-05T22:55:24.808+0000] {subprocess.py:93} INFO - [info] set current project to projet_ingestion (in build file:/opt/***/projet_big_data_cytech/)
+[2026-02-05T22:55:29.532+0000] {subprocess.py:93} INFO - [info] compiling 5 Scala sources to /opt/***/projet_big_data_cytech/ex02_data_ingestion/target/scala-2.13/classes ...
+[2026-02-05T22:55:35.282+0000] {subprocess.py:93} INFO - [warn] 2 deprecations; re-run with -deprecation for details
+[2026-02-05T22:55:35.288+0000] {subprocess.py:93} INFO - [warn] one warning found
+[2026-02-05T22:55:35.291+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-05T22:55:36.329+0000] {subprocess.py:93} INFO - [info] running Main
+[2026-02-05T22:55:37.216+0000] {subprocess.py:93} INFO - Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[2026-02-05T22:55:37.227+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SparkContext: Running Spark version 3.5.5
+[2026-02-05T22:55:37.236+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SparkContext: OS info Linux, 5.15.0-168-generic, amd64
+[2026-02-05T22:55:37.236+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SparkContext: Java version 17.0.18
+[2026-02-05T22:55:37.450+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-02-05T22:55:37.578+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO ResourceUtils: ==============================================================
+[2026-02-05T22:55:37.579+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2026-02-05T22:55:37.580+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO ResourceUtils: ==============================================================
+[2026-02-05T22:55:37.582+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SparkContext: Submitted application: DataIngestion
+[2026-02-05T22:55:37.609+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2026-02-05T22:55:37.614+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO ResourceProfile: Limiting resource is cpu
+[2026-02-05T22:55:37.616+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2026-02-05T22:55:37.687+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SecurityManager: Changing view acls to: default
+[2026-02-05T22:55:37.688+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SecurityManager: Changing modify acls to: default
+[2026-02-05T22:55:37.688+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SecurityManager: Changing view acls groups to:
+[2026-02-05T22:55:37.689+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SecurityManager: Changing modify acls groups to:
+[2026-02-05T22:55:37.689+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: default; groups with view permissions: EMPTY; users with modify permissions: default; groups with modify permissions: EMPTY
+[2026-02-05T22:55:37.944+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO Utils: Successfully started service 'sparkDriver' on port 33689.
+[2026-02-05T22:55:37.966+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SparkEnv: Registering MapOutputTracker
+[2026-02-05T22:55:37.992+0000] {subprocess.py:93} INFO - 26/02/05 22:55:37 INFO SparkEnv: Registering BlockManagerMaster
+[2026-02-05T22:55:38.006+0000] {subprocess.py:93} INFO - 26/02/05 22:55:38 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2026-02-05T22:55:38.007+0000] {subprocess.py:93} INFO - 26/02/05 22:55:38 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2026-02-05T22:55:38.009+0000] {subprocess.py:93} INFO - Exception in thread "sbt-bg-threads-1" java.lang.IllegalAccessError: Error running public static void Main.main(java.lang.String[]).
+[2026-02-05T22:55:38.010+0000] {subprocess.py:93} INFO - java.lang.IllegalAccessError: class org.apache.spark.storage.StorageUtils$ (in unnamed module @0x198e0f3b) cannot access class sun.nio.ch.DirectBuffer (in module java.base) because module java.base does not export sun.nio.ch to unnamed module @0x198e0f3b
+[2026-02-05T22:55:38.011+0000] {subprocess.py:93} INFO - If using a layered classloader, this can occur if jvm package private classes are accessed across layers. This can be fixed by changing to the Flat or ScalaInstance class loader layering strategies.
+[2026-02-05T22:55:38.011+0000] {subprocess.py:93} INFO - 	at sbt.Run.invokeMain(Run.scala:152)
+[2026-02-05T22:55:38.012+0000] {subprocess.py:93} INFO - 	at sbt.Run.execute$1(Run.scala:93)
+[2026-02-05T22:55:38.012+0000] {subprocess.py:93} INFO - 	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:120)
+[2026-02-05T22:55:38.012+0000] {subprocess.py:93} INFO - 	at sbt.Run$.executeSuccess(Run.scala:186)
+[2026-02-05T22:55:38.013+0000] {subprocess.py:93} INFO - 	at sbt.Run.runWithLoader(Run.scala:120)
+[2026-02-05T22:55:38.013+0000] {subprocess.py:93} INFO - 	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1980)
+[2026-02-05T22:55:38.013+0000] {subprocess.py:93} INFO - 	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1919)
+[2026-02-05T22:55:38.013+0000] {subprocess.py:93} INFO - 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2026-02-05T22:55:38.014+0000] {subprocess.py:93} INFO - 	at scala.util.Try$.apply(Try.scala:213)
+[2026-02-05T22:55:38.014+0000] {subprocess.py:93} INFO - 	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:366)
+[2026-02-05T22:55:38.014+0000] {subprocess.py:93} INFO - 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2026-02-05T22:55:38.014+0000] {subprocess.py:93} INFO - 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2026-02-05T22:55:38.015+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2026-02-05T22:55:38.020+0000] {subprocess.py:93} INFO - [success] Total time: 13 s, completed Feb 5, 2026, 10:55:38 PM
+[2026-02-05T22:55:38.570+0000] {subprocess.py:93} INFO - ✅ ex02 terminé avec succès!
+[2026-02-05T22:55:38.570+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-02-05T22:55:38.592+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-05T22:55:38.592+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=nyc_taxi_pipeline, task_id=ex02_data_ingestion, run_id=manual__2026-02-05T22:50:00+00:00, execution_date=20260205T225000, start_date=20260205T225517, end_date=20260205T225538
+[2026-02-05T22:55:38.635+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2026-02-05T22:55:38.658+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-05T22:55:38.661+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

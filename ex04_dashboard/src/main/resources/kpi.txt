@@ -1,0 +1,51 @@
+KPI YELLOW TAXI – INDICATEURS CLÉS
+
+1. Chiffre d’affaires total
+   - Description : Somme totale des revenus générés par toutes les courses.
+   - Formule : SUM(total_amount)
+   - Objectif : Mesurer la performance économique globale.
+
+2. Nombre total de courses
+   - Description : Nombre total de trajets effectués.
+   - Formule : COUNT(*)
+   - Objectif : Mesurer le volume d’activité.
+
+3. Revenu moyen par course
+   - Description : Montant moyen payé par trajet.
+   - Formule : AVG(total_amount)
+   - Objectif : Évaluer la valeur moyenne d’une course.
+
+4. Distance moyenne par course
+   - Description : Distance moyenne parcourue par trajet.
+   - Formule : AVG(trip_distance)
+   - Objectif : Comprendre les habitudes de déplacement.
+
+5. Durée moyenne des courses
+   - Description : Temps moyen d’un trajet entre pickup et dropoff.
+   - Formule : AVG(dropoff_datetime - pickup_datetime)
+   - Objectif : Évaluer l’efficacité du service.
+
+6. Pourboire moyen par course
+   - Description : Montant moyen de pourboire laissé par les clients.
+   - Formule : AVG(tip_amount)
+   - Objectif : Indicateur indirect de satisfaction client.
+
+7. Répartition des moyens de paiement
+   - Description : Distribution des paiements (carte, cash, autres).
+   - Formule : COUNT(*) GROUP BY payment_type
+   - Objectif : Analyser les comportements de paiement.
+
+8. Nombre de courses par heure de la journée
+   - Description : Volume de courses selon l’heure.
+   - Formule : COUNT(*) GROUP BY hour(pickup_datetime)
+   - Objectif : Identifier les heures de pointe.
+
+9. Revenu mensuel
+   - Description : Chiffre d’affaires par mois.
+   - Formule : SUM(total_amount) GROUP BY month(pickup_datetime)
+   - Objectif : Analyser la saisonnalité.
+
+10. Top zones de pickup
+    - Description : Zones où les courses commencent le plus souvent.
+    - Formule : COUNT(*) GROUP BY PULocationID ORDER BY COUNT DESC
+    - Objectif : Identifier les zones à forte demande.

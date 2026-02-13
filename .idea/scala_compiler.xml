@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="common,ex1,ex2,ex4,ex5,projet_big_data_cytech_25_7980,projet_ingestion" />
+  </component>
+</project>

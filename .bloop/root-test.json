@@ -1,0 +1,162 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "root-test",
+        "directory": "/home/cytech/BigData/projet_big_data_cytech_25",
+        "workspaceDir": "/home/cytech/BigData/projet_big_data_cytech_25",
+        "sources": [
+            "/home/cytech/BigData/projet_big_data_cytech_25/src/test/scala",
+            "/home/cytech/BigData/projet_big_data_cytech_25/src/test/scala-2.13",
+            "/home/cytech/BigData/projet_big_data_cytech_25/src/test/scala-2",
+            "/home/cytech/BigData/projet_big_data_cytech_25/src/test/java",
+            "/home/cytech/BigData/projet_big_data_cytech_25/target/scala-2.13/src_managed/test"
+        ],
+        "dependencies": [
+            "root",
+            "ex1-test",
+            "ex2-test",
+            "ex4-test",
+            "common-test"
+        ],
+        "classpath": [
+            "/home/cytech/BigData/projet_big_data_cytech_25/.bloop/root/scala-2.13/classes",
+            "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.17/scala-library-2.13.17.jar"
+        ],
+        "out": "/home/cytech/BigData/projet_big_data_cytech_25/.bloop/root",
+        "classesDir": "/home/cytech/BigData/projet_big_data_cytech_25/.bloop/root/scala-2.13/test-classes",
+        "resources": [
+            "/home/cytech/BigData/projet_big_data_cytech_25/src/test/resources",
+            "/home/cytech/BigData/projet_big_data_cytech_25/target/scala-2.13/resource_managed/test"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "2.13.17",
+            "options": [
+                
+            ],
+            "jars": [
+                "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.17/scala-library-2.13.17.jar",
+                "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.17/scala-compiler-2.13.17.jar",
+                "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.17/scala-reflect-2.13.17.jar",
+                "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/io/github/java-diff-utils/java-diff-utils/4.16/java-diff-utils-4.16.jar",
+                "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jline/jline/3.29.0/jline-3.29.0-jdk8.jar"
+            ],
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": true,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": true,
+                "filterLibraryFromClasspath": true
+            }
+        },
+        "java": {
+            "options": [
+                
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/home/cytech/.sdkman/candidates/java/11.0.29-tem",
+                "options": [
+                    "-Duser.dir=/home/cytech/BigData/projet_big_data_cytech_25"
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.17",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.17/scala-library-2.13.17.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.17/scala-library-2.13.17-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.13.17",
+                    "configurations": "optional",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.17/scala-library-2.13.17.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/cytech/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.17/scala-library-2.13.17-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "test"
+        ]
+    }
+}

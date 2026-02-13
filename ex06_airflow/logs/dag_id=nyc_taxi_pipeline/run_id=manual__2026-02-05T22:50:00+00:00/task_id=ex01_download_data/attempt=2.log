@@ -1,0 +1,43 @@
+[2026-02-05T22:53:05.775+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-05T22:53:05.791+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex01_download_data manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:53:05.799+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex01_download_data manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:53:05.799+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 4
+[2026-02-05T22:53:05.812+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): ex01_download_data> on 2026-02-05 22:50:00+00:00
+[2026-02-05T22:53:05.821+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=219) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-05T22:53:05.822+0000] {standard_task_runner.py:72} INFO - Started process 222 to run task
+[2026-02-05T22:53:05.821+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_pipeline', 'ex01_download_data', 'manual__2026-02-05T22:50:00+00:00', '--job-id', '111', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_pipeline.py', '--cfg-path', '/tmp/tmplbpbf7ss']
+[2026-02-05T22:53:05.823+0000] {standard_task_runner.py:105} INFO - Job 111: Subtask ex01_download_data
+[2026-02-05T22:53:05.861+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_taxi_pipeline.ex01_download_data manual__2026-02-05T22:50:00+00:00 [running]> on host cf729da7de68
+[2026-02-05T22:53:05.937+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='cytech' AIRFLOW_CTX_DAG_ID='nyc_taxi_pipeline' AIRFLOW_CTX_TASK_ID='ex01_download_data' AIRFLOW_CTX_EXECUTION_DATE='2026-02-05T22:50:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-05T22:50:00+00:00'
+[2026-02-05T22:53:05.937+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-05T22:53:05.972+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-05T22:53:05.972+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        set -e  # Arrêter si erreur\n        \n        echo "📥 ex01: Téléchargement des données NYC Taxi..."\n        cd /opt/***/projet_big_data_cytech\n        \n        if sbt ex1/run; then\n            echo "✅ ex01 terminé avec succès!"\n        else\n            echo "❌ ERREUR: ex01 a échoué!"\n            exit 1\n        fi\n        ']
+[2026-02-05T22:53:05.985+0000] {subprocess.py:86} INFO - Output:
+[2026-02-05T22:53:05.987+0000] {subprocess.py:93} INFO - 📥 ex01: Téléchargement des données NYC Taxi...
+[2026-02-05T22:53:06.065+0000] {subprocess.py:93} INFO - downloading sbt launcher 1.9.9
+[2026-02-05T22:53:06.670+0000] {subprocess.py:93} INFO - copying runtime jar...
+[2026-02-05T22:53:17.991+0000] {subprocess.py:93} INFO - [info] welcome to sbt 1.8.3 (Debian Java 17.0.18)
+[2026-02-05T22:53:23.458+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build-build from metals.sbt ...
+[2026-02-05T22:53:24.494+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project/project
+[2026-02-05T22:53:27.667+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build from metals.sbt ...
+[2026-02-05T22:53:28.136+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project
+[2026-02-05T22:53:28.731+0000] {subprocess.py:93} INFO - [info] waiting for lock on /home/***/.ivy2/exclude_classifiers.lock to be available...
+[2026-02-05T22:53:33.887+0000] {subprocess.py:93} INFO - [success] Generated .bloop/projet_big_data_cytech-build.json
+[2026-02-05T22:53:34.046+0000] {subprocess.py:93} INFO - [success] Total time: 6 s, completed Feb 5, 2026, 10:53:34 PM
+[2026-02-05T22:53:37.321+0000] {subprocess.py:93} INFO - [info] loading settings for project root from build.sbt ...
+[2026-02-05T22:53:38.506+0000] {subprocess.py:93} INFO - [info] set current project to projet_ingestion (in build file:/opt/***/projet_big_data_cytech/)
+[2026-02-05T22:54:33.141+0000] {subprocess.py:93} INFO - [info] compiling 1 Scala source to /opt/***/projet_big_data_cytech/common/target/scala-2.13/classes ...
+[2026-02-05T22:54:33.237+0000] {subprocess.py:93} INFO - [info] waiting for lock on /home/***/.sbt/boot/scala-2.12.17/org.scala-sbt/sbt/1.8.3/sbt.components.lock to be available...
+[2026-02-05T22:54:48.899+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-05T22:54:49.928+0000] {subprocess.py:93} INFO - [info] compiling 1 Scala source to /opt/***/projet_big_data_cytech/ex01_data_retrieval/target/scala-2.13/classes ...
+[2026-02-05T22:54:53.303+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-05T22:55:00.804+0000] {subprocess.py:93} INFO - [info] running MinIOLoader
+[2026-02-05T22:55:15.240+0000] {subprocess.py:93} INFO - Erreur lors du téléchargement du fichier Parquet : Unable to execute HTTP request: Connect to localhost:9000 [localhost/127.0.0.1] failed: Connection refused
+[2026-02-05T22:55:15.269+0000] {subprocess.py:93} INFO - [success] Total time: 96 s (01:36), completed Feb 5, 2026, 10:55:15 PM
+[2026-02-05T22:55:15.789+0000] {subprocess.py:93} INFO - ✅ ex01 terminé avec succès!
+[2026-02-05T22:55:15.793+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-02-05T22:55:16.075+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-05T22:55:16.078+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=nyc_taxi_pipeline, task_id=ex01_download_data, run_id=manual__2026-02-05T22:50:00+00:00, execution_date=20260205T225000, start_date=20260205T225305, end_date=20260205T225516
+[2026-02-05T22:55:16.203+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2026-02-05T22:55:16.354+0000] {taskinstance.py:3891} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-02-05T22:55:16.358+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

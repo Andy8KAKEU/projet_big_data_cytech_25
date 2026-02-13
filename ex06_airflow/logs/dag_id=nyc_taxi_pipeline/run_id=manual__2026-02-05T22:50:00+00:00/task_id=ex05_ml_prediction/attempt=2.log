@@ -1,0 +1,140 @@
+[2026-02-05T22:53:06.870+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-05T22:53:06.892+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex05_ml_prediction manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:53:06.907+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex05_ml_prediction manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:53:06.908+0000] {taskinstance.py:2856} INFO - Starting attempt 2 of 3
+[2026-02-05T22:53:06.926+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): ex05_ml_prediction> on 2026-02-05 22:50:00+00:00
+[2026-02-05T22:53:06.939+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=433) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-05T22:53:06.938+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_pipeline', 'ex05_ml_prediction', 'manual__2026-02-05T22:50:00+00:00', '--job-id', '112', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_pipeline.py', '--cfg-path', '/tmp/tmp_v80fm8s']
+[2026-02-05T22:53:06.940+0000] {standard_task_runner.py:105} INFO - Job 112: Subtask ex05_ml_prediction
+[2026-02-05T22:53:06.940+0000] {standard_task_runner.py:72} INFO - Started process 435 to run task
+[2026-02-05T22:53:06.995+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_taxi_pipeline.ex05_ml_prediction manual__2026-02-05T22:50:00+00:00 [running]> on host cf729da7de68
+[2026-02-05T22:53:07.098+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='cytech' AIRFLOW_CTX_DAG_ID='nyc_taxi_pipeline' AIRFLOW_CTX_TASK_ID='ex05_ml_prediction' AIRFLOW_CTX_EXECUTION_DATE='2026-02-05T22:50:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-05T22:50:00+00:00'
+[2026-02-05T22:53:07.099+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-05T22:53:07.120+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-05T22:53:07.120+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        set -e\n        \n        echo "🤖 ex05: Exécution des prédictions ML..."\n        cd /opt/***/projet_big_data_cytech\n        \n        if sbt ex5/run; then\n            echo "✅ ex05 terminé avec succès!"\n        else\n            echo "❌ ERREUR: ex05 a échoué!"\n            exit 1\n        fi\n        ']
+[2026-02-05T22:53:07.132+0000] {subprocess.py:86} INFO - Output:
+[2026-02-05T22:53:07.134+0000] {subprocess.py:93} INFO - 🤖 ex05: Exécution des prédictions ML...
+[2026-02-05T22:53:07.759+0000] {subprocess.py:93} INFO - [info] [launcher] getting org.scala-sbt sbt 1.8.3  (this may take some time)...
+[2026-02-05T22:53:12.657+0000] {subprocess.py:93} INFO - [info] [launcher] getting Scala 2.12.17 (for sbt)...
+[2026-02-05T22:53:14.793+0000] {subprocess.py:93} INFO - [info] welcome to sbt 1.8.3 (Debian Java 17.0.18)
+[2026-02-05T22:53:20.540+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build-build from metals.sbt ...
+[2026-02-05T22:53:21.789+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project/project
+[2026-02-05T22:53:26.430+0000] {subprocess.py:93} INFO - [info] loading settings for project projet_big_data_cytech-build from metals.sbt ...
+[2026-02-05T22:53:26.806+0000] {subprocess.py:93} INFO - [info] loading project definition from /opt/***/projet_big_data_cytech/project
+[2026-02-05T22:53:33.119+0000] {subprocess.py:93} INFO - [error] Couldn't run bloopGenerate. The issue could be caused by failing to compile the project.
+[2026-02-05T22:53:33.125+0000] {subprocess.py:93} INFO - [warn] Removed stale /opt/***/projet_big_data_cytech/project/.bloop/projet_big_data_cytech_25-build.json
+[2026-02-05T22:53:33.150+0000] {subprocess.py:93} INFO - [error] lmcoursier.internal.shaded.coursier.error.FetchError$DownloadingArtifacts: Error fetching artifacts:
+[2026-02-05T22:53:33.151+0000] {subprocess.py:93} INFO - [error] https://repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.8.3/main-settings_2.12-1.8.3-sources.jar: download error: Caught java.io.IOException (Resource deadlock avoided) while downloading https://repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.8.3/main-settings_2.12-1.8.3-sources.jar
+[2026-02-05T22:53:33.152+0000] {subprocess.py:93} INFO - [error]
+[2026-02-05T22:53:33.152+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.Artifacts$.$anonfun$fetchArtifacts$9(Artifacts.scala:365)
+[2026-02-05T22:53:33.153+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.util.Task$.$anonfun$flatMap$extension$1(Task.scala:14)
+[2026-02-05T22:53:33.154+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.util.Task$.$anonfun$flatMap$extension$1$adapted(Task.scala:14)
+[2026-02-05T22:53:33.154+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.util.Task$.wrap(Task.scala:82)
+[2026-02-05T22:53:33.155+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.util.Task$.$anonfun$flatMap$2(Task.scala:14)
+[2026-02-05T22:53:33.156+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.Future.$anonfun$flatMap$1(Future.scala:307)
+[2026-02-05T22:53:33.157+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:41)
+[2026-02-05T22:53:33.158+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2026-02-05T22:53:33.158+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2026-02-05T22:53:33.159+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2026-02-05T22:53:33.160+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2026-02-05T22:53:33.161+0000] {subprocess.py:93} INFO - [error] Caused by: lmcoursier.internal.shaded.coursier.cache.ArtifactError$DownloadError: download error: Caught java.io.IOException (Resource deadlock avoided) while downloading https://repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.8.3/main-settings_2.12-1.8.3-sources.jar
+[2026-02-05T22:53:33.161+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$.helper$2(Downloader.scala:793)
+[2026-02-05T22:53:33.162+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$.coursier$cache$internal$Downloader$$downloading(Downloader.scala:806)
+[2026-02-05T22:53:33.163+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$Blocking$.remote(Downloader.scala:415)
+[2026-02-05T22:53:33.163+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader.$anonfun$remote$6(Downloader.scala:533)
+[2026-02-05T22:53:33.164+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+[2026-02-05T22:53:33.164+0000] {subprocess.py:93} INFO - [error] 	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+[2026-02-05T22:53:33.164+0000] {subprocess.py:93} INFO - [error] 	at scala.util.Success.map(Try.scala:213)
+[2026-02-05T22:53:33.165+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+[2026-02-05T22:53:33.165+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+[2026-02-05T22:53:33.165+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2026-02-05T22:53:33.165+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2026-02-05T22:53:33.166+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2026-02-05T22:53:33.167+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2026-02-05T22:53:33.168+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2026-02-05T22:53:33.169+0000] {subprocess.py:93} INFO - [error] Caused by: java.io.IOException: Resource deadlock avoided
+[2026-02-05T22:53:33.170+0000] {subprocess.py:93} INFO - [error] 	at java.base/sun.nio.ch.FileDispatcherImpl.lock0(Native Method)
+[2026-02-05T22:53:33.171+0000] {subprocess.py:93} INFO - [error] 	at java.base/sun.nio.ch.FileDispatcherImpl.lock(FileDispatcherImpl.java:96)
+[2026-02-05T22:53:33.171+0000] {subprocess.py:93} INFO - [error] 	at java.base/sun.nio.ch.FileChannelImpl.lock(FileChannelImpl.java:1286)
+[2026-02-05T22:53:33.172+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.nio.channels.FileChannel.lock(FileChannel.java:1089)
+[2026-02-05T22:53:33.173+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.paths.CachePath.withStructureLock(CachePath.java:152)
+[2026-02-05T22:53:33.174+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.CacheLocks$.withStructureLock(CacheLocks.scala:20)
+[2026-02-05T22:53:33.174+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$Blocking$.doDownload(Downloader.scala:262)
+[2026-02-05T22:53:33.175+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$Blocking$.$anonfun$remote$2(Downloader.scala:410)
+[2026-02-05T22:53:33.176+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.CacheLocks$.loop$1(CacheLocks.scala:73)
+[2026-02-05T22:53:33.176+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.CacheLocks$.withLockOr(CacheLocks.scala:93)
+[2026-02-05T22:53:33.177+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$Blocking$.$anonfun$remote$1(Downloader.scala:413)
+[2026-02-05T22:53:33.178+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$.$anonfun$downloading$1(Downloader.scala:764)
+[2026-02-05T22:53:33.178+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.CacheLocks$.withUrlLock(CacheLocks.scala:112)
+[2026-02-05T22:53:33.179+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$.helper$2(Downloader.scala:764)
+[2026-02-05T22:53:33.180+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$.coursier$cache$internal$Downloader$$downloading(Downloader.scala:806)
+[2026-02-05T22:53:33.181+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader$Blocking$.remote(Downloader.scala:415)
+[2026-02-05T22:53:33.181+0000] {subprocess.py:93} INFO - [error] 	at lmcoursier.internal.shaded.coursier.cache.internal.Downloader.$anonfun$remote$6(Downloader.scala:533)
+[2026-02-05T22:53:33.182+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+[2026-02-05T22:53:33.183+0000] {subprocess.py:93} INFO - [error] 	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+[2026-02-05T22:53:33.184+0000] {subprocess.py:93} INFO - [error] 	at scala.util.Success.map(Try.scala:213)
+[2026-02-05T22:53:33.184+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+[2026-02-05T22:53:33.185+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+[2026-02-05T22:53:33.186+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+[2026-02-05T22:53:33.186+0000] {subprocess.py:93} INFO - [error] 	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+[2026-02-05T22:53:33.187+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2026-02-05T22:53:33.188+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2026-02-05T22:53:33.189+0000] {subprocess.py:93} INFO - [error] 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2026-02-05T22:53:33.189+0000] {subprocess.py:93} INFO - [error] (updateSbtClassifiers) lmcoursier.internal.shaded.coursier.error.FetchError$DownloadingArtifacts: Error fetching artifacts:
+[2026-02-05T22:53:33.190+0000] {subprocess.py:93} INFO - [error] https://repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.8.3/main-settings_2.12-1.8.3-sources.jar: download error: Caught java.io.IOException (Resource deadlock avoided) while downloading https://repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.8.3/main-settings_2.12-1.8.3-sources.jar
+[2026-02-05T22:53:33.191+0000] {subprocess.py:93} INFO - [error] Total time: 6 s, completed Feb 5, 2026, 10:53:33 PM
+[2026-02-05T22:53:33.191+0000] {subprocess.py:93} INFO - [warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)
+[2026-02-05T22:53:36.868+0000] {subprocess.py:93} INFO - [info] loading settings for project root from build.sbt ...
+[2026-02-05T22:53:38.273+0000] {subprocess.py:93} INFO - [info] set current project to projet_ingestion (in build file:/opt/***/projet_big_data_cytech/)
+[2026-02-05T22:54:33.811+0000] {subprocess.py:93} INFO - [info] compiling 1 Scala source to /opt/***/projet_big_data_cytech/common/target/scala-2.13/classes ...
+[2026-02-05T22:54:34.038+0000] {subprocess.py:93} INFO - [info] waiting for lock on /home/***/.sbt/boot/scala-2.12.17/org.scala-sbt/sbt/1.8.3/sbt.components.lock to be available...
+[2026-02-05T22:54:50.958+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-05T22:54:52.135+0000] {subprocess.py:93} INFO - [info] compiling 4 Scala sources to /opt/***/projet_big_data_cytech/ex05_ml_prediction_service/target/scala-2.13/classes ...
+[2026-02-05T22:55:00.492+0000] {subprocess.py:93} INFO - [info] done compiling
+[2026-02-05T22:55:06.793+0000] {subprocess.py:93} INFO - [info] running Main
+[2026-02-05T22:55:12.578+0000] {subprocess.py:93} INFO - Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+[2026-02-05T22:55:12.586+0000] {subprocess.py:93} INFO - 26/02/05 22:55:12 INFO SparkContext: Running Spark version 3.5.5
+[2026-02-05T22:55:12.590+0000] {subprocess.py:93} INFO - 26/02/05 22:55:12 INFO SparkContext: OS info Linux, 5.15.0-168-generic, amd64
+[2026-02-05T22:55:12.591+0000] {subprocess.py:93} INFO - 26/02/05 22:55:12 INFO SparkContext: Java version 17.0.18
+[2026-02-05T22:55:13.025+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-02-05T22:55:13.182+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO ResourceUtils: ==============================================================
+[2026-02-05T22:55:13.184+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2026-02-05T22:55:13.185+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO ResourceUtils: ==============================================================
+[2026-02-05T22:55:13.187+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SparkContext: Submitted application: TipPredictionML
+[2026-02-05T22:55:13.221+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2026-02-05T22:55:13.229+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO ResourceProfile: Limiting resource is cpu
+[2026-02-05T22:55:13.232+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2026-02-05T22:55:13.353+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SecurityManager: Changing view acls to: default
+[2026-02-05T22:55:13.354+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SecurityManager: Changing modify acls to: default
+[2026-02-05T22:55:13.355+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SecurityManager: Changing view acls groups to:
+[2026-02-05T22:55:13.356+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SecurityManager: Changing modify acls groups to:
+[2026-02-05T22:55:13.357+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: default; groups with view permissions: EMPTY; users with modify permissions: default; groups with modify permissions: EMPTY
+[2026-02-05T22:55:13.855+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO Utils: Successfully started service 'sparkDriver' on port 34661.
+[2026-02-05T22:55:13.957+0000] {subprocess.py:93} INFO - 26/02/05 22:55:13 INFO SparkEnv: Registering MapOutputTracker
+[2026-02-05T22:55:14.060+0000] {subprocess.py:93} INFO - 26/02/05 22:55:14 INFO SparkEnv: Registering BlockManagerMaster
+[2026-02-05T22:55:14.102+0000] {subprocess.py:93} INFO - 26/02/05 22:55:14 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2026-02-05T22:55:14.104+0000] {subprocess.py:93} INFO - 26/02/05 22:55:14 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2026-02-05T22:55:14.145+0000] {subprocess.py:93} INFO - Exception in thread "sbt-bg-threads-1" java.lang.IllegalAccessError: Error running public static void Main.main(java.lang.String[]).
+[2026-02-05T22:55:14.149+0000] {subprocess.py:93} INFO - java.lang.IllegalAccessError: class org.apache.spark.storage.StorageUtils$ (in unnamed module @0x33b46442) cannot access class sun.nio.ch.DirectBuffer (in module java.base) because module java.base does not export sun.nio.ch to unnamed module @0x33b46442
+[2026-02-05T22:55:14.149+0000] {subprocess.py:93} INFO - If using a layered classloader, this can occur if jvm package private classes are accessed across layers. This can be fixed by changing to the Flat or ScalaInstance class loader layering strategies.
+[2026-02-05T22:55:14.150+0000] {subprocess.py:93} INFO - 	at sbt.Run.invokeMain(Run.scala:152)
+[2026-02-05T22:55:14.165+0000] {subprocess.py:93} INFO - 	at sbt.Run.execute$1(Run.scala:93)
+[2026-02-05T22:55:14.166+0000] {subprocess.py:93} INFO - 	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:120)
+[2026-02-05T22:55:14.166+0000] {subprocess.py:93} INFO - 	at sbt.Run$.executeSuccess(Run.scala:186)
+[2026-02-05T22:55:14.166+0000] {subprocess.py:93} INFO - 	at sbt.Run.runWithLoader(Run.scala:120)
+[2026-02-05T22:55:14.166+0000] {subprocess.py:93} INFO - 	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1980)
+[2026-02-05T22:55:14.166+0000] {subprocess.py:93} INFO - 	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1919)
+[2026-02-05T22:55:14.166+0000] {subprocess.py:93} INFO - 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[2026-02-05T22:55:14.167+0000] {subprocess.py:93} INFO - 	at scala.util.Try$.apply(Try.scala:213)
+[2026-02-05T22:55:14.167+0000] {subprocess.py:93} INFO - 	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:366)
+[2026-02-05T22:55:14.167+0000] {subprocess.py:93} INFO - 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+[2026-02-05T22:55:14.167+0000] {subprocess.py:93} INFO - 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[2026-02-05T22:55:14.189+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2026-02-05T22:55:14.199+0000] {subprocess.py:93} INFO - [success] Total time: 95 s (01:35), completed Feb 5, 2026, 10:55:14 PM
+[2026-02-05T22:55:15.009+0000] {subprocess.py:93} INFO - ✅ ex05 terminé avec succès!
+[2026-02-05T22:55:15.014+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-02-05T22:55:15.404+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-05T22:55:15.406+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=nyc_taxi_pipeline, task_id=ex05_ml_prediction, run_id=manual__2026-02-05T22:50:00+00:00, execution_date=20260205T225000, start_date=20260205T225306, end_date=20260205T225515
+[2026-02-05T22:55:15.470+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 0
+[2026-02-05T22:55:15.569+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-05T22:55:15.573+0000] {local_task_job_runner.py:240} INFO - ::endgroup::

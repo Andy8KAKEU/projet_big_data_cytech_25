@@ -1,0 +1,142 @@
+[2026-02-05T22:50:01.349+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-02-05T22:50:01.372+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex03_schema_creation manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:50:01.383+0000] {taskinstance.py:2603} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: nyc_taxi_pipeline.ex03_schema_creation manual__2026-02-05T22:50:00+00:00 [queued]>
+[2026-02-05T22:50:01.384+0000] {taskinstance.py:2856} INFO - Starting attempt 1 of 3
+[2026-02-05T22:50:01.403+0000] {taskinstance.py:2879} INFO - Executing <Task(BashOperator): ex03_schema_creation> on 2026-02-05 22:50:00+00:00
+[2026-02-05T22:50:01.415+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=177) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-05T22:50:01.416+0000] {standard_task_runner.py:72} INFO - Started process 180 to run task
+[2026-02-05T22:50:01.420+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'nyc_taxi_pipeline', 'ex03_schema_creation', 'manual__2026-02-05T22:50:00+00:00', '--job-id', '106', '--raw', '--subdir', 'DAGS_FOLDER/nyc_taxi_pipeline.py', '--cfg-path', '/tmp/tmpgabfowy0']
+[2026-02-05T22:50:01.422+0000] {standard_task_runner.py:105} INFO - Job 106: Subtask ex03_schema_creation
+[2026-02-05T22:50:01.491+0000] {task_command.py:467} INFO - Running <TaskInstance: nyc_taxi_pipeline.ex03_schema_creation manual__2026-02-05T22:50:00+00:00 [running]> on host 2af73409e72d
+[2026-02-05T22:50:01.686+0000] {taskinstance.py:3122} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='cytech' AIRFLOW_CTX_DAG_ID='nyc_taxi_pipeline' AIRFLOW_CTX_TASK_ID='ex03_schema_creation' AIRFLOW_CTX_EXECUTION_DATE='2026-02-05T22:50:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-05T22:50:00+00:00'
+[2026-02-05T22:50:01.687+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-02-05T22:50:01.711+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-02-05T22:50:01.711+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        set -e\n        \n        echo "🗄️ ex03: Création du schéma PostgreSQL..."\n        cd /opt/***/projet_big_data_cytech\n        \n        if sbt ex3/run; then\n            echo "✅ ex03 terminé avec succès!"\n        else\n            echo "❌ ERREUR: ex03 a échoué!"\n            exit 1\n        fi\n        ']
+[2026-02-05T22:50:01.726+0000] {subprocess.py:86} INFO - Output:
+[2026-02-05T22:50:01.728+0000] {subprocess.py:93} INFO - 🗄️ ex03: Création du schéma PostgreSQL...
+[2026-02-05T22:50:04.841+0000] {subprocess.py:93} INFO - java.nio.file.AccessDeniedException: /opt/***/projet_big_data_cytech/target/global-logging/sbt-global-log349361741119988328.log
+[2026-02-05T22:50:04.841+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:90)
+[2026-02-05T22:50:04.842+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+[2026-02-05T22:50:04.842+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+[2026-02-05T22:50:04.842+0000] {subprocess.py:93} INFO - 	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+[2026-02-05T22:50:04.843+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+[2026-02-05T22:50:04.843+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.Files.createFile(Files.java:658)
+[2026-02-05T22:50:04.843+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.TempFileHelper.create(TempFileHelper.java:136)
+[2026-02-05T22:50:04.843+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.TempFileHelper.createTempFile(TempFileHelper.java:159)
+[2026-02-05T22:50:04.843+0000] {subprocess.py:93} INFO - 	at java.base/java.nio.file.Files.createTempFile(Files.java:878)
+[2026-02-05T22:50:04.844+0000] {subprocess.py:93} INFO - 	at sbt.StandardMain$.$anonfun$initialGlobalLogging$1(Main.scala:242)
+[2026-02-05T22:50:04.844+0000] {subprocess.py:93} INFO - 	at sbt.internal.io.Retry$.apply(Retry.scala:46)
+[2026-02-05T22:50:04.844+0000] {subprocess.py:93} INFO - 	at sbt.internal.io.Retry$.apply(Retry.scala:28)
+[2026-02-05T22:50:04.844+0000] {subprocess.py:93} INFO - 	at sbt.internal.io.Retry$.apply(Retry.scala:23)
+[2026-02-05T22:50:04.845+0000] {subprocess.py:93} INFO - 	at sbt.StandardMain$.createTemp$1(Main.scala:240)
+[2026-02-05T22:50:04.845+0000] {subprocess.py:93} INFO - 	at sbt.StandardMain$.$anonfun$initialGlobalLogging$4(Main.scala:246)
+[2026-02-05T22:50:04.845+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.GlobalLogBacking$.apply(GlobalLogging.scala:61)
+[2026-02-05T22:50:04.845+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.GlobalLogging$.initial(GlobalLogging.scala:88)
+[2026-02-05T22:50:04.845+0000] {subprocess.py:93} INFO - 	at sbt.StandardMain$.initialGlobalLogging(Main.scala:247)
+[2026-02-05T22:50:04.846+0000] {subprocess.py:93} INFO - 	at sbt.StandardMain$.initialGlobalLogging(Main.scala:250)
+[2026-02-05T22:50:04.846+0000] {subprocess.py:93} INFO - 	at sbt.StandardMain$.initialState(Main.scala:280)
+[2026-02-05T22:50:04.846+0000] {subprocess.py:93} INFO - 	at sbt.xMain$.$anonfun$run$11(Main.scala:126)
+[2026-02-05T22:50:04.846+0000] {subprocess.py:93} INFO - 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[2026-02-05T22:50:04.847+0000] {subprocess.py:93} INFO - 	at scala.Console$.withIn(Console.scala:230)
+[2026-02-05T22:50:04.847+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.Terminal$.withIn(Terminal.scala:578)
+[2026-02-05T22:50:04.847+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.Terminal$.$anonfun$withStreams$1(Terminal.scala:358)
+[2026-02-05T22:50:04.849+0000] {subprocess.py:93} INFO - 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[2026-02-05T22:50:04.849+0000] {subprocess.py:93} INFO - 	at scala.Console$.withOut(Console.scala:167)
+[2026-02-05T22:50:04.850+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.Terminal$.$anonfun$withOut$2(Terminal.scala:568)
+[2026-02-05T22:50:04.850+0000] {subprocess.py:93} INFO - 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[2026-02-05T22:50:04.850+0000] {subprocess.py:93} INFO - 	at scala.Console$.withErr(Console.scala:196)
+[2026-02-05T22:50:04.850+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.Terminal$.withOut(Terminal.scala:568)
+[2026-02-05T22:50:04.850+0000] {subprocess.py:93} INFO - 	at sbt.internal.util.Terminal$.withStreams(Terminal.scala:358)
+[2026-02-05T22:50:04.851+0000] {subprocess.py:93} INFO - 	at sbt.xMain$.withStreams$1(Main.scala:87)
+[2026-02-05T22:50:04.851+0000] {subprocess.py:93} INFO - 	at sbt.xMain$.run(Main.scala:121)
+[2026-02-05T22:50:04.851+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2026-02-05T22:50:04.851+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+[2026-02-05T22:50:04.852+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2026-02-05T22:50:04.852+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[2026-02-05T22:50:04.852+0000] {subprocess.py:93} INFO - 	at sbt.internal.XMainConfiguration.run(XMainConfiguration.java:57)
+[2026-02-05T22:50:04.852+0000] {subprocess.py:93} INFO - 	at sbt.xMain.run(Main.scala:46)
+[2026-02-05T22:50:04.853+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.$anonfun$run$1(Launch.scala:149)
+[2026-02-05T22:50:04.858+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.withContextLoader(Launch.scala:176)
+[2026-02-05T22:50:04.858+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.run(Launch.scala:149)
+[2026-02-05T22:50:04.858+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.$anonfun$apply$1(Launch.scala:44)
+[2026-02-05T22:50:04.859+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.launch(Launch.scala:159)
+[2026-02-05T22:50:04.859+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.apply(Launch.scala:44)
+[2026-02-05T22:50:04.859+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Launch$.apply(Launch.scala:21)
+[2026-02-05T22:50:04.859+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot$.runImpl(Boot.scala:78)
+[2026-02-05T22:50:04.859+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot$.run(Boot.scala:73)
+[2026-02-05T22:50:04.860+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot$.main(Boot.scala:21)
+[2026-02-05T22:50:04.860+0000] {subprocess.py:93} INFO - 	at xsbt.boot.Boot.main(Boot.scala)
+[2026-02-05T22:50:04.860+0000] {subprocess.py:93} INFO - [error] [launcher] error during sbt launcher: java.nio.file.AccessDeniedException: /opt/***/projet_big_data_cytech/target/global-logging/sbt-global-log349361741119988328.log
+[2026-02-05T22:50:05.328+0000] {subprocess.py:93} INFO - ❌ ERREUR: ex03 a échoué!
+[2026-02-05T22:50:05.329+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-02-05T22:50:05.354+0000] {taskinstance.py:3301} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-02-05T22:50:05.367+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=nyc_taxi_pipeline, task_id=ex03_schema_creation, run_id=manual__2026-02-05T22:50:00+00:00, execution_date=20260205T225000, start_date=20260205T225001, end_date=20260205T225005
+[2026-02-05T22:50:05.417+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-02-05T22:50:05.417+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 106 for task ex03_schema_creation (Bash command failed. The command returned a non-zero exit code 1.; 180)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2995, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3149, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3173, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 249, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-02-05T22:50:05.471+0000] {local_task_job_runner.py:261} INFO - Task exited with return code 1
+[2026-02-05T22:50:05.494+0000] {taskinstance.py:3891} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-05T22:50:05.501+0000] {local_task_job_runner.py:240} INFO - ::endgroup::
