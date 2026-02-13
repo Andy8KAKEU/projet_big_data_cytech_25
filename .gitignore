@@ -48,9 +48,15 @@ build/
 
 ### Scala ###
 .bsp/
+.bloop/
+project/metals.sbt
+project/project/metals.sbt
 
 ### Minio ###
 minio-data
 
 ### Hadoop ###
 hadoop
+
+### Data Files ###
+data/raw/
