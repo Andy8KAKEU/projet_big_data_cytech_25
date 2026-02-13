@@ -24,7 +24,7 @@ object Main {
           "yellow_tripdata_2025-08_cleaned.parquet"
         )
       )
-      println(s"   ✓ Données chargées: ${data.count()} lignes")
+      println(s"    Données chargées: ${data.count()} lignes")
 
       // Affichage du schéma Parquet
       println("\n   Schéma du dataset Parquet:")
@@ -34,7 +34,7 @@ object Main {
       // 2. Préparation des données et feature engineering
       println("\n[2/5] Préparation des données et feature engineering...")
       val preparedData = DataPreparation.prepareFeatures(data)
-      println(s"   ✓ Features préparées")
+      println(s"    Features préparées")
 
       // Affichage du schéma des features
       println("\n   Schema des features:")
@@ -47,13 +47,13 @@ object Main {
       println("\n[3/5] Division des données (train/test)...")
       val Array(trainingData, testData) =
         preparedData.randomSplit(Array(0.8, 0.2), seed = 42)
-      println(s"   ✓ Training set: ${trainingData.count()} lignes")
-      println(s"   ✓ Test set: ${testData.count()} lignes")
+      println(s"    Training set: ${trainingData.count()} lignes")
+      println(s"    Test set: ${testData.count()} lignes")
 
       // 4. Entraînement du modèle
       println("\n[4/5] Entraînement du modèle de classification...")
       val model = TipPredictionModel.trainModel(trainingData)
-      println(s"   ✓ Modèle entraîné avec succès")
+      println(s"    Modèle entraîné avec succès")
 
       // 5. Évaluation du modèle
       println("\n[5/5] Évaluation du modèle...")
@@ -66,7 +66,7 @@ object Main {
 
     } catch {
       case e: Exception =>
-        println(s"\n❌ ERREUR: ${e.getMessage}")
+        println(s"\n ERREUR: ${e.getMessage}")
         e.printStackTrace()
     } finally {
       spark.stop()
